@@ -43,6 +43,7 @@ class MyTray extends Component {
         );
     }
     render() {
+        // console.log("render Tray");
         return (        
                 <Tray
                     label="Tray Example"

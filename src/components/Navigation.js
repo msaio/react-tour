@@ -53,6 +53,7 @@ class Nav extends Component {
     }
 
     render() {
+        // console.log("render Nav");
         return (
             <div id="navi" style={{ position: "fixed", bottom: 0, top: 0, zIndex: 999 }}>
                 <Navigation

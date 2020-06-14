@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import './App.css';
 import Nav from './components/Navigation';
 import { canvasHighContrast } from '@instructure/ui-themes';
@@ -15,7 +15,7 @@ function App() {
     openTour(!isTourOpen);
   }
 
-  const steps = [
+  let steps = [
     {
       selector: '#acc',
       content: 'This is my first Step',
@@ -37,11 +37,20 @@ function App() {
     },
   ];
 
-
-  
   function observe(){
     const elem = document.getElementById("tray");
-    const obs = new MutationObserver( (records) => { steps[0].selector = "#thisacc"; } );
+    const obs = new MutationObserver( 
+      (records) => { 
+          if(elem.childNodes[0].childNodes.length === 0) {
+            console.log("Empty");
+            steps[0].selector = "#acc";
+          }
+          else {
+            console.log("Not Empty");
+            steps[0].selector = "#thisacc";
+          }
+      } 
+    );
     obs.observe(elem, {
       childList: true,
       subtree: true,
@@ -56,7 +65,9 @@ function App() {
           steps={steps}
           isOpen={isTourOpen}
           onRequestClose={closeTour}
+          update="steps"
         />
+
         <div id="tray">
         </div>
     </div>
