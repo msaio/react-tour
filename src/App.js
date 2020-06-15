@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useRef } from 'react';
 import './App.css';
 import Nav from './components/Navigation';
 import { canvasHighContrast } from '@instructure/ui-themes';
@@ -11,65 +11,55 @@ canvasHighContrast.use()
 function App() {
   const [isTourOpen, openTour] = useState(true);
 
-  function closeTour(){
+  function closeTour() {
     openTour(!isTourOpen);
   }
 
-  let steps = [
+
+  let tourCfg = [
     {
-      selector: '#acc',
+      selector: "#acc",
       content: 'This is my first Step',
-      position: [100, 10],
-      action: ()=>{ console.log("S1"); observe(); },
+      position: "right",
+      observe: "#tray",
+      action: () => { console.log("S1"); },
     },
-  
+
     {
       selector: '#cour',
       content: 'This is my second Step',
       position: [100, 100],
-      action: ()=>{ console.log("S2"); },
+      action: () => { console.log("S2"); },
     },
     {
       selector: '#help',
       content: 'This is my third Step',
-      position: "bottom",  
-      action: ()=>{ console.log("S3"); },
+      position: "bottom",
+      action: () => { console.log("S3"); },
     },
   ];
 
-  function observe(){
-    const elem = document.getElementById("tray");
-    const obs = new MutationObserver( 
-      (records) => { 
-          if(elem.childNodes[0].childNodes.length === 0) {
-            console.log("Empty");
-            steps[0].selector = "#acc";
-          }
-          else {
-            console.log("Not Empty");
-            steps[0].selector = "#thisacc";
-          }
-      } 
-    );
-    obs.observe(elem, {
-      childList: true,
-      subtree: true,
-    });
+  const [steps, changeSteps] = useState(tourCfg);
+  function handleChangeSteps() {
+    changeSteps(tourCfg);
   }
 
   return (
     <div className="App" id="app">
-        <Nav accountName="Ngô Quốc Hải" courseName="CSoC"/>
+      <Nav accountName="Ngô Quốc Hải" courseName="CSoC" />
 
-        <Tour
-          steps={steps}
-          isOpen={isTourOpen}
-          onRequestClose={closeTour}
-          update="steps"
-        />
+      <Tour
+        steps={steps}
+        isOpen={isTourOpen}
+        onRequestClose={closeTour}
+        update="steps"
+        getCurrentStep={
+          (num) => { console.log(num); }
+        }
+      />
 
-        <div id="tray">
-        </div>
+      <div id="tray">
+      </div>
     </div>
   );
 

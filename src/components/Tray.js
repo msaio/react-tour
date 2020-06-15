@@ -19,14 +19,10 @@ class MyTray extends Component {
             isActive: false,
         }
         this.hideTray = this.hideTray.bind(this);
-        this.keepOpen = this.keepOpen.bind(this);
     }
 
     hideTray() {
         this.props.close();
-    }
-    keepOpen() {
-        this.props.keepOpen();
     }
     renderCloseButton() {
         return (
@@ -57,8 +53,8 @@ class MyTray extends Component {
                     mountNode={ document.getElementById("tray") }
                 >
                     {   this.props.activeItem === "account" &&
-                        <div style={{ marginLeft: "84px", }} onClick={this.keepOpen}>
-                            <div style={{ padding: "1.5rem"}} id="thisacc">
+                        
+                            <div style={{ marginLeft: "84px", padding: "1.5rem"}} onClick={()=>{console.log("Account")}} id="thisacc">
                                 {this.renderCloseButton()}
                                 <View as="div" padding="medium" margin="" textAlign="center">
                                     <View as="span" textAlign="center">
@@ -76,11 +72,10 @@ class MyTray extends Component {
                                     <List.Item><Link href="https://www.arcmedia.com">Arc by Instructure</Link></List.Item>
                                 </List>
                             </div>
-                        </div>
+                        
                     }
                     {   this.props.activeItem === "course" &&
-                        <div style={{ marginLeft: "84px", }} onClick={()=>{console.log("Course")}}>
-                            <div style={{ padding: "1.5rem"}}>
+                            <div style={{ marginLeft: "84px", padding: "1.5rem"}} onClick={()=>{console.log("Course")}} >
                             {this.renderCloseButton()}
                                 <View as="span">
                                     <Heading as="h2" level="h3">{this.props.courseName}</Heading>
@@ -108,11 +103,9 @@ class MyTray extends Component {
                                     Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla.
                                 </Text>
                             </div>
-                        </div>
                     }
                     {   this.props.activeItem === "help" &&
-                        <div style={{ marginLeft: "84px", }} onClick={()=>{console.log("Help")}}>
-                            <div style={{ padding: "1.5rem"}}>
+                            <div style={{ marginLeft: "84px", padding: "1.5rem"}} onClick={()=>{console.log("Help")}}>
                                 {this.renderCloseButton()}
                                 <View as="span">
                                     <Heading as="h2" level="h3">Help</Heading>
@@ -133,7 +126,6 @@ class MyTray extends Component {
                                     </List.Item>
                                 </List>
                             </div>
-                        </div>
                     }
 
                 </Tray>

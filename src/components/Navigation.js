@@ -16,7 +16,6 @@ class Nav extends Component {
 
         }
         this.closeTray = this.closeTray.bind(this);
-        this.keepOpenTray = this.keepOpenTray.bind(this);
         
     }
 
@@ -46,10 +45,6 @@ class Nav extends Component {
     
     closeTray(){
         this.setState({isTrayOpen: false ,activeItem: "dashboard", theCurrent: null});
-    }
-
-    keepOpenTray(){
-        this.setState({isTrayOpen: true, activeItem: this.state.theCurrent});
     }
 
     render() {
@@ -102,7 +97,7 @@ class Nav extends Component {
                         onClick={() => { this.handleClick("help") }}
                     />
                 </Navigation>
-                <MyTray isTrayOpen={this.state.isTrayOpen} activeItem={this.state.activeItem} close={this.closeTray} keepOpen={this.keepOpenTray} accountName={this.props.accountName} courseName={this.props.courseName}/>
+                <MyTray isTrayOpen={this.state.isTrayOpen} activeItem={this.state.activeItem} close={this.closeTray} accountName={this.props.accountName} courseName={this.props.courseName}/>
             </div>
         );
     }
