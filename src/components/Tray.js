@@ -49,12 +49,13 @@ class MyTray extends Component {
                     theme={{ zIndex: "99" }}
                     insertAt="bottom"
                     shouldCloseOnDocumentClick={false}
-                    onClick={this.hideTray}
+                    // onClick={this.hideTray}
                     mountNode={ document.getElementById("tray") }
                 >
+                    <div style={{ marginLeft: "84px", padding: "1.5rem"}} id="thistray" >
                     {   this.props.activeItem === "account" &&
                         
-                            <div style={{ marginLeft: "84px", padding: "1.5rem"}} onClick={()=>{console.log("Account")}} id="thisacc">
+                            <div onClick={()=>{console.log("Account")}} id="thisacc">
                                 {this.renderCloseButton()}
                                 <View as="div" padding="medium" margin="" textAlign="center">
                                     <View as="span" textAlign="center">
@@ -75,7 +76,7 @@ class MyTray extends Component {
                         
                     }
                     {   this.props.activeItem === "course" &&
-                            <div style={{ marginLeft: "84px", padding: "1.5rem"}} onClick={()=>{console.log("Course")}} >
+                            <div onClick={()=>{console.log("Course")}} >
                             {this.renderCloseButton()}
                                 <View as="span">
                                     <Heading as="h2" level="h3">{this.props.courseName}</Heading>
@@ -105,7 +106,7 @@ class MyTray extends Component {
                             </div>
                     }
                     {   this.props.activeItem === "help" &&
-                            <div style={{ marginLeft: "84px", padding: "1.5rem"}} onClick={()=>{console.log("Help")}}>
+                            <div onClick={()=>{console.log("Help")}}>
                                 {this.renderCloseButton()}
                                 <View as="span">
                                     <Heading as="h2" level="h3">Help</Heading>
@@ -127,7 +128,7 @@ class MyTray extends Component {
                                 </List>
                             </div>
                     }
-
+                    </div>
                 </Tray>
             
         );

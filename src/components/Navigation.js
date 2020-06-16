@@ -27,17 +27,24 @@ class Nav extends Component {
                 theCurrent: null,
             });
         } else {
-            if(this.state.theCurrent === null){
+            if(this.state.theCurrent === type){
+                this.setState({
+                    isTrayOpen: false,
+                    activeItem: "dashboard",
+                    theCurrent: null,
+                });
+            }
+            else if(this.state.theCurrent === null){
                 this.setState({
                     isTrayOpen: true,
                     activeItem: type,
                     theCurrent: type,
                 });
-            }else{
+            }else {
                 this.setState({
-                    isTrayOpen: false,
-                    activeItem: null,
-                    theCurrent: null,
+                    isTrayOpen: true,
+                    activeItem: type,
+                    theCurrent: type,
                 });
             }
         }
