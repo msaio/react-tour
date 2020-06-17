@@ -47,8 +47,15 @@ function MTour() {
                     <div>
                         0
                         <button onClick={() => {
-                            makeItFirst();
-                            closeTour();
+                            if(trayOpen === false){
+                                makeItFirst();
+                                closeTour();
+                            }
+                            else {
+                                document.getElementById("acc").click();
+                                makeItFirst();
+                                closeTour();
+                            }
                         }}>Cancel</button>
                         <button onClick={() => {
                             if (trayOpen === false) {
@@ -82,12 +89,11 @@ function MTour() {
                     <iFrame 
                         src="https://player.vimeo.com/video/75514816?title=0&byline=0&portrait=0" 
                         width="300" height="150" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen>
-
                     </iFrame>
                     
                     <button onClick={() => {
                         if (trayOpen === false) {
-                            handleCurrent("");
+                            handleCurrent("acc");
                             goTo(0);
                         } else {
                             document.getElementById("acc").click();
@@ -129,10 +135,10 @@ function MTour() {
                     <button onClick={() => {
                         if (trayOpen === false) {
                             handleCurrent("acc");
+                            handleTray();
                             goTo(1);
                         } else {
                             document.getElementById("acc").click();
-                            handleTray();
                             handleCurrent("acc");
                             goTo(1);
                         }
@@ -157,6 +163,7 @@ function MTour() {
             action: () => { console.log("S2"); },
             // stepInteraction: false,
         },
+        // 3
         {
             selector: '#thistray',
             content: ({ goTo, inDOM }) => (
@@ -167,15 +174,22 @@ function MTour() {
                             document.getElementById("cour").click();
                             handleCurrent("cour");
                             handleTray();
-                            goTo(3);
+                            goTo(2);
                         } else {
                             document.getElementById("cour").click();
                             handleCurrent("cour");
-                            goTo(3);
+                            goTo(2);
                         }
                     }}>Prev</button>
                     <button onClick={() => {
-                       goTo(4);
+                        if(trayOpen === false){
+                            handleCurrent("");
+                            goTo(4)
+                        } else {
+                            document.getElementById("help").click();
+                            handleCurrent("");
+                            goTo(4)
+                        }
                     }}>Close</button>
                     <br />
                     {inDOM && '🎉 Look at your step!'}
