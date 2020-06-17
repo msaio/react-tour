@@ -79,7 +79,12 @@ function MTour() {
             selector: '#thistray',
             content: ({ goTo, inDOM }) => (
                 <div>
-                    1
+                    <iFrame 
+                        src="https://player.vimeo.com/video/75514816?title=0&byline=0&portrait=0" 
+                        width="300" height="150" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen>
+
+                    </iFrame>
+                    
                     <button onClick={() => {
                         if (trayOpen === false) {
                             handleCurrent("");
@@ -116,7 +121,11 @@ function MTour() {
             selector: '#thistray',
             content: ({ goTo, inDOM }) => (
                 <div>
-                    2
+                    <iFrame 
+                        src="https://player.vimeo.com/video/69658934?title=0&byline=0&portrait=0" 
+                        width="300" height="150" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen>
+                    </iFrame>
+                   
                     <button onClick={() => {
                         if (trayOpen === false) {
                             handleCurrent("acc");
