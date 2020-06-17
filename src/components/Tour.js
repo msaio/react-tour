@@ -45,7 +45,10 @@ function MTour() {
             content: ({ goTo, inDOM }) => {
                 return (
                     <div>
-                        0
+                        <Heading>HELLO TOUR dqwdqwd</Heading>
+                        <hr/>
+                        <Link href="google.com">bqwdqwdqwqwqwdqdw</Link>
+                        <br />
                         <button onClick={() => {
                             if(trayOpen === false){
                                 makeItFirst();
@@ -74,7 +77,7 @@ function MTour() {
                             }
                         }}>Next</button>
                         <br />
-                        {inDOM && '🎉 Look at your step!'}
+                        '1/4'
                     </div>
                 );
             },
@@ -86,6 +89,10 @@ function MTour() {
             selector: '#thistray',
             content: ({ goTo, inDOM }) => (
                 <div>
+                    <Heading>HELLO TOUR</Heading>
+                        <hr/>
+                        <Link href="google.com">bqwdqwdqwqwqwdqdw</Link>
+                        <br />
                     <iFrame 
                         src="https://player.vimeo.com/video/75514816?title=0&byline=0&portrait=0" 
                         width="300" height="150" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen>
@@ -115,7 +122,7 @@ function MTour() {
                         }
                     }}>Next</button>
                     <br />
-                    {inDOM && '🎉 Look at your step!'}
+                    {inDOM && '2/4'}
                 </div>
             ),
             position: "right",
@@ -127,6 +134,10 @@ function MTour() {
             selector: '#thistray',
             content: ({ goTo, inDOM }) => (
                 <div>
+                    <Heading>HELLO TOUR</Heading>
+                        <hr/>
+                        <Link href="google.com">bqwdqwdqwqwqwdqdw</Link>
+                        <br />
                     <iFrame 
                         src="https://player.vimeo.com/video/69658934?title=0&byline=0&portrait=0" 
                         width="300" height="150" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen>
@@ -156,7 +167,7 @@ function MTour() {
                         }
                     }}>Next</button>
                     <br />
-                    {inDOM && '🎉 Look at your step!'}
+                    {inDOM && '3/4'}
                 </div>
             ),
             position: "right",
@@ -168,7 +179,18 @@ function MTour() {
             selector: '#thistray',
             content: ({ goTo, inDOM }) => (
                 <div>
-                    3
+                    <List>
+                        <List.Item><Link href="https://www.canvaslms.com/try-canvas">Canvas by Instructure</Link></List.Item>
+                        <List.Item><Link href="https://www.getbridge.com">Bridge by Instructure</Link></List.Item>
+                        <List.Item>
+                            <Link href="https://www.arcmedia.com">Arc by Instructure</Link>
+                            <List>
+                                <List.Item><Link href="https://www.canvaslms.com/try-canvas">Canvas by Instructure</Link></List.Item>
+                                <List.Item><Link href="https://www.getbridge.com">Bridge by Instructure</Link></List.Item>
+                                <List.Item><Link href="https://www.arcmedia.com">Arc by Instructure</Link></List.Item>
+                            </List>
+                        </List.Item>
+                    </List>
                     <button onClick={() => {
                         if (trayOpen === false) {
                             document.getElementById("cour").click();
@@ -192,7 +214,7 @@ function MTour() {
                         }
                     }}>Close</button>
                     <br />
-                    {inDOM && '🎉 Look at your step!'}
+                    {inDOM && '4/4'}
                 </div>
             ),
             position: "right",
